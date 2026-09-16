@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LifeMart World - নেক্সট-জেন ডিজিটাল আর্নিং ইকোসিস্টেম</title>
+
+    <!-- Meta Tags for High-CTR Social & FB Ads -->
+    <meta property="og:title" content="LifeMart World - প্রিমিয়াম ডিজিটাল আর্নিং ও ক্যারিয়ার প্ল্যাটফর্ম">
+    <meta property="og:description" content="টেলিগ্রাম ক্লাউড মিনি অ্যাপের মাধ্যমে পেশাদার মাইক্রো-টাস্ক ও আধুনিক বিজনেস থেকে নিশ্চিত ইনকাম করুন।">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;600;700;800;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-base: #060A12;
+            --bg-surface: #0E1626;
+            --bg-card: #131E33;
+            --primary: #F59E0B;
+            --primary-light: #FBBF24;
+            --primary-glow: rgba(245, 158, 11, 0.45);
+            --success: #10B981;
+            --info: #38BDF8;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(245, 158, 11, 0.35);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Hind Siliguri', 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background: var(--bg-base); color: #FFF; overflow-x: hidden; background-image: radial-gradient(circle at 50% -10%, rgba(245, 158, 11, 0.15) 0%, transparent 55%), radial-gradient(circle at 90% 40%, rgba(56, 189, 248, 0.08) 0%, transparent 40%), radial-gradient(circle at 10% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 45%); }
+        a { text-decoration: none; color: inherit; }
+
+        /* LUXURY WELCOME POPUP MODAL */
+        .modal-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(12px); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 18px; opacity: 0; visibility: hidden; transition: all 0.35s ease; }
+        .modal-backdrop.show { opacity: 1; visibility: visible; }
+        .welcome-popup-box { background: linear-gradient(145deg, #111C30, #0B1322); border: 1.5px solid var(--border-glow); border-radius: 26px; padding: 24px 20px; width: 100%; max-width: 360px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 35px rgba(245, 158, 11, 0.2); position: relative; transform: scale(0.85); transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .modal-backdrop.show .welcome-popup-box { transform: scale(1); }
+        
+        .modal-close-icon { position: absolute; top: 14px; right: 14px; width: 30px; height: 30px; border-radius: 50%; background: rgba(255, 255, 255, 0.07); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: #94A3B8; font-size: 14px; cursor: pointer; transition: 0.2s; }
+        .modal-close-icon:hover { background: rgba(239, 68, 68, 0.2); color: #EF4444; border-color: #EF4444; }
+
+        .pop-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); color: var(--primary); font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+        .pop-icon-glow { width: 62px; height: 62px; margin: 0 auto 14px auto; border-radius: 20px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(56, 189, 248, 0.2)); border: 1.5px solid var(--primary); display: flex; align-items: center; justify-content: center; font-size: 28px; color: var(--primary); box-shadow: 0 0 25px rgba(245, 158, 11, 0.35); }
+        .welcome-popup-box h3 { font-size: 20px; font-weight: 900; margin-bottom: 6px; color: #FFF; }
+        .welcome-popup-box p { font-size: 13px; color: #CBD5E1; line-height: 1.5; margin-bottom: 20px; }
+
+        .btn-popup-cta { width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(90deg, #F59E0B, #EA580C); color: #000; padding: 14px; border-radius: 16px; font-weight: 900; font-size: 15px; box-shadow: 0 6px 20px var(--primary-glow); transition: 0.25s; }
+        .btn-popup-cta:active { transform: scale(0.97); }
+        .btn-later-text { display: inline-block; font-size: 11.5px; color: #64748B; margin-top: 12px; cursor: pointer; font-weight: 600; }
+
+        /* LIVE FLOATING WITHDRAWAL NOTIFICATION */
+        .live-toast { position: fixed; top: 72px; left: 50%; transform: translateX(-50%); background: rgba(14, 22, 38, 0.96); border: 1.5px solid var(--primary); backdrop-filter: blur(14px); padding: 7px 16px; border-radius: 30px; display: flex; align-items: center; gap: 8px; z-index: 998; box-shadow: 0 10px 28px rgba(0,0,0,0.6); animation: pulseToast 6.5s infinite ease-in-out; pointer-events: none; width: max-content; max-width: 90%; }
+        .toast-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); box-shadow: 0 0 10px var(--success); }
+        .toast-text { font-size: 11.5px; font-weight: 700; color: #F8FAFC; }
+        @keyframes pulseToast { 0%, 100% { opacity: 0; transform: translate(-50%, -15px); } 15%, 85% { opacity: 1; transform: translate(-50%, 0); } }
+
+        /* NAVBAR */
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 999; background: rgba(6, 10, 18, 0.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 12px 18px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 8px; font-weight: 900; font-size: 18px; }
+        .logo i { color: var(--primary); font-size: 20px; filter: drop-shadow(0 0 8px var(--primary-glow)); }
+        .nav-btn { background: linear-gradient(90deg, #F59E0B, #EA580C); color: #000; padding: 7px 16px; border-radius: 20px; font-weight: 900; font-size: 12px; display: flex; align-items: center; gap: 5px; box-shadow: 0 3px 12px var(--primary-glow); }
+
+        /* HERO AREA */
+        .hero { padding: 115px 16px 20px 16px; text-align: center; max-width: 680px; margin: 0 auto; }
+        .enterprise-pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.4); padding: 5px 14px; border-radius: 25px; font-size: 11px; font-weight: 800; color: #10B981; margin-bottom: 16px; }
+        .enterprise-pill .p-dot { width: 7px; height: 7px; border-radius: 50%; background: #10B981; box-shadow: 0 0 10px #10B981; }
+
+        .hero h1 { font-size: 30px; line-height: 1.3; font-weight: 900; margin-bottom: 14px; }
+        .hero h1 span { background: linear-gradient(90deg, #F59E0B, #FBBF24, #38BDF8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 14px; color: #94A3B8; line-height: 1.6; margin-bottom: 24px; font-weight: 500; }
+
+        .cta-btn-main { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(135deg, #F59E0B, #EA580C); color: #000; width: 100%; max-width: 350px; padding: 16px; border-radius: 35px; font-size: 17px; font-weight: 900; box-shadow: 0 10px 30px var(--primary-glow); animation: glowAnim 2.2s infinite ease-in-out; }
+        @keyframes glowAnim { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); filter: drop-shadow(0 0 16px rgba(245,158,11,0.6)); } }
+
+        /* REALTIME LIVE COUNTERS */
+        .live-counter-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; max-width: 680px; margin: 26px auto 30px auto; padding: 0 8px; }
+        .count-card { background: rgba(14, 22, 38, 0.85); border: 1px solid var(--border-glow); border-radius: 16px; padding: 12px 4px; text-align: center; }
+        .count-card h3 { font-size: 18px; font-weight: 900; font-family: 'Poppins', sans-serif; }
+        .count-card p { font-size: 10px; color: #94A3B8; font-weight: 700; margin-top: 3px; }
+
+        /* ROADMAP PILL (TELEGRAM MINI APP + PLAY STORE ROADMAP) */
+        .tech-pill { max-width: 620px; margin: 0 auto 34px auto; background: rgba(22, 33, 54, 0.6); border: 1px dashed rgba(56, 189, 248, 0.4); border-radius: 18px; padding: 12px 14px; display: flex; justify-content: space-around; align-items: center; font-size: 11.5px; font-weight: 700; color: #CBD5E1; }
+        .tech-pill div { display: flex; align-items: center; gap: 6px; }
+
+        /* PRO INCOME WINGS (EXECUTIVE TILES - NO CHEAP RATES) */
+        .section-title { font-size: 18px; font-weight: 900; text-align: center; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .section-title i { color: var(--primary); font-size: 16px; }
+
+        .income-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 680px; margin: 0 auto 34px auto; padding: 0 10px; }
+        .income-tile { background: var(--bg-surface); border: 1px solid var(--border); border-radius: 18px; padding: 14px 12px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; transition: 0.2s; }
+        .income-tile:hover { border-color: rgba(245, 158, 11, 0.4); }
+        .tile-head { display: flex; align-items: center; gap: 10px; }
+        .tile-icon { width: 38px; height: 38px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+        .tile-head h4 { font-size: 13.5px; font-weight: 800; color: #FFF; line-height: 1.25; }
+        .tile-sub { font-size: 10.5px; color: #94A3B8; line-height: 1.4; }
+        .tile-tag { font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 8px; width: fit-content; }
+
+        /* ONBOARDING (QUICK 3 STEPS) */
+        .quick-steps { display: flex; flex-direction: column; gap: 10px; max-width: 680px; margin: 0 auto 34px auto; padding: 0 10px; }
+        .step-item { background: rgba(14, 22, 38, 0.7); border: 1px solid var(--border); border-radius: 16px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; }
+        .step-num { width: 30px; height: 30px; border-radius: 50%; background: var(--primary); color: #000; font-weight: 900; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .step-item p { font-size: 12.5px; font-weight: 700; color: #E2E8F0; }
+
+        /* TRUST GATEWAYS BAR */
+        .pay-trust-bar { text-align: center; padding: 16px; background: rgba(14, 22, 38, 0.5); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 35px; }
+        .pay-badges { display: flex; justify-content: center; gap: 12px; font-size: 12px; font-weight: 800; flex-wrap: wrap; }
+        .pay-badges span { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 6px 14px; border-radius: 20px; }
+
+        /* STICKY BOTTOM ACTION BAR */
+        .sticky-action-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(6, 10, 18, 0.96); backdrop-filter: blur(14px); border-top: 1px solid var(--border); padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; z-index: 999; }
+        .sticky-left { display: flex; flex-direction: column; }
+        .sticky-left span { font-size: 10px; color: #94A3B8; }
+        .sticky-left b { font-size: 13.5px; color: #10B981; font-weight: 900; }
+        .sticky-btn { background: linear-gradient(90deg, #F59E0B, #EA580C); color: #000; font-weight: 900; font-size: 13.5px; padding: 10px 22px; border-radius: 25px; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 15px var(--primary-glow); }
+
+        footer { padding: 20px 14px 85px 14px; text-align: center; font-size: 11px; color: #64748B; }
+    </style>
+</head>
+<body>
+
+    <!-- LUXURY WELCOME POPUP MODAL -->
+    <div class="modal-backdrop" id="welcomeModal">
+        <div class="welcome-popup-box">
+            <div class="modal-close-icon" onclick="closeWelcomePopup()">
+                <i class="fas fa-times"></i>
+            </div>
+            
+            <div class="pop-badge"><i class="fas fa-gift"></i> ওয়েলকাম বোনাস অফার</div>
+            <div class="pop-icon-glow"><i class="fas fa-gem"></i></div>
+            
+            <h3>স্বাগতম LifeMart World-এ!</h3>
+            <p>আমাদের অফিসিয়াল টেলিগ্রাম প্ল্যাটফর্মে যুক্ত হয়ে এখনই আপনার অ্যাকাউন্ট ভেরিফাই করুন এবং প্রফেশনাল ইনকাম সুবিধাগুলো আনলক করুন।</p>
+            
+            <a href="https://t.me/lifemart_world_bot/Digital?startapp=7246314532" target="_blank" class="btn-popup-cta">
+                <i class="fas fa-arrow-right-to-bracket"></i> অ্যাপে প্রবেশ করুন
+            </a>
+            
+            <span class="btn-later-text" onclick="closeWelcomePopup()">পরে প্রবেশ করব</span>
+        </div>
+    </div>
+
+    <!-- LIVE POPUP (SOCIAL PROOF) -->
+    <div class="live-toast" id="liveToast">
+        <div class="toast-dot"></div>
+        <div class="toast-text" id="toastMsg">সাকিব আহমেদ ক্যাশ-আউট সম্পন্ন করলেন (বিকাশ)</div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo"><i class="fas fa-gem"></i> LifeMart World</div>
+        <a href="https://t.me/lifemart_world_bot/Digital?startapp=7246314532" target="_blank" class="nav-btn">
+            <i class="fas fa-arrow-right-to-bracket"></i> অ্যাপে প্রবেশ করুন
+        </a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="enterprise-pill">
+            <span class="p-dot"></span> ভেরিফাইড প্রাতিষ্ঠানিক ডিজিটাল ইকোসিস্টেম
+        </div>
+        <h1>রিয়েল কাজ, শতভাগ নিশ্চিত পেমেন্ট<br><span>LifeMart World</span> আর্নিং হাব</h1>
+        <p>ভিডিও স্ট্রিমিং, ই-কমার্স রিসেলিং বিজনেস, মাইক্রো-টাস্ক ও কন্টেন্ট পাবলিশিংয়ের সমন্বয়ে গঠিত দেশের অন্যতম নির্ভরযোগ্য ডিজিটাল আর্নিং প্ল্যাটফর্ম। সরাসরি বিকাশ ও নগদে ক্যাশ-আউট সুবিধা।</p>
+        
+        <a href="https://t.me/lifemart_world_bot/Digital?startapp=7246314532" target="_blank" class="cta-btn-main">
+            <i class="fas fa-bolt"></i> অ্যাপে প্রবেশ করুন (সরাসরি কাজ শুরু)
+        </a>
+    </section>
+
+    <!-- REALTIME LIVE COUNTERS -->
+    <div class="live-counter-grid">
+        <div class="count-card">
+            <h3 style="color:#F59E0B;" id="cnt-today">১,৭২০+</h3>
+            <p>আজকে জয়েন</p>
+        </div>
+        <div class="count-card">
+            <h3 style="color:#10B981;">১৬,৩০০+</h3>
+            <p>গত ৭ দিনে</p>
+        </div>
+        <div class="count-card">
+            <h3 style="color:#38BDF8;">৬৮,০০০+</h3>
+            <p>গত ৩০ দিনে</p>
+        </div>
+        <div class="count-card">
+            <h3 style="color:#FFF;" id="cnt-total">১,৪৪,৫০০+</h3>
+            <p>মোট মেম্বার</p>
+        </div>
+    </div>
+
+    <!-- TECH ROADMAP PILL (TELEGRAM + PLAY STORE) -->
+    <div class="tech-pill">
+        <div><i class="fab fa-telegram" style="color:#38BDF8;"></i> টেলিগ্রাম মিনি অ্যাপ (জিরো মেমোরি খরচ)</div>
+        <div style="opacity: 0.3;">|</div>
+        <div><i class="fab fa-google-play" style="color:#10B981;"></i> প্লে-স্টোর অ্যাপ (Coming Soon)</div>
+    </div>
+
+    <!-- PRO INCOME MODULES (NO CHEAP RATES) -->
+    <div class="section-title"><i class="fas fa-layer-group"></i> মূল ইনকাম মাধ্যমসমূহ</div>
+    <div class="income-grid">
+        <div class="income-tile">
+            <div class="tile-head">
+                <div class="tile-icon" style="background:rgba(239,68,68,0.15); color:#EF4444;"><i class="fab fa-youtube"></i></div>
+                <div>
+                    <h4>ভিডিও স্ট্রিমিং হাব</h4>
+                    <p class="tile-sub">স্পনসরড ভিডিও ও ওয়াচ রিওয়ার্ড</p>
+                </div>
+            </div>
+            <span class="tile-tag" style="background:rgba(239,68,68,0.12); color:#EF4444;">পার্টনারশিপ সুবিধা</span>
+        </div>
+
+        <div class="income-tile">
+            <div class="tile-head">
+                <div class="tile-icon" style="background:rgba(37,99,235,0.15); color:#3B82F6;"><i class="fas fa-store"></i></div>
+                <div>
+                    <h4>হোলসেল রিসেলিং</h4>
+                    <p class="tile-sub">জিরো ইনভেস্টমেন্টে ই-কমার্স বিজনেস</p>
+                </div>
+            </div>
+            <span class="tile-tag" style="background:rgba(37,99,235,0.12); color:#3B82F6;">প্রফিট মার্জিন কমিশন</span>
+        </div>
+
+        <div class="income-tile">
+            <div class="tile-head">
+                <div class="tile-icon" style="background:rgba(16,185,129,0.15); color:#10B981;"><i class="fas fa-tasks"></i></div>
+                <div>
+                    <h4>মাইক্রো-টাস্ক মার্কেট</h4>
+                    <p class="tile-sub">সোশ্যাল ক্যাম্পেইন ও জব পোস্ট</p>
+                </div>
+            </div>
+            <span class="tile-tag" style="background:rgba(16,185,129,0.12); color:#10B981;">ভেরিফায়েড প্রুফ আর্নিং</span>
+        </div>
+
+        <div class="income-tile">
+            <div class="tile-head">
+                <div class="tile-icon" style="background:rgba(236,72,153,0.15); color:#EC4899;"><i class="fas fa-feather-pointed"></i></div>
+                <div>
+                    <h4>ক্রিয়েটিভ লেখালেখি</h4>
+                    <p class="tile-sub">গল্প, ব্লগ ও বাস্তব অভিজ্ঞতার প্রকাশ</p>
+                </div>
+            </div>
+            <span class="tile-tag" style="background:rgba(236,72,153,0.12); color:#EC4899;">কন্টেন্ট ক্রিয়েটর বোনাস</span>
+        </div>
+
+        <div class="income-tile">
+            <div class="tile-head">
+                <div class="tile-icon" style="background:rgba(139,92,246,0.15); color:#8B5CF6;"><i class="fas fa-cloud-arrow-up"></i></div>
+                <div>
+                    <h4>স্পেশাল সার্ভিসেস</h4>
+                    <p class="tile-sub">ডিজিটাল অ্যাকাউন্ট সার্ভিস ও ট্র্যাকিং</p>
+                </div>
+            </div>
+            <span class="tile-tag" style="background:rgba(139,92,246,0.12); color:#8B5CF6;">ইনস্ট্যান্ট ব্যালেন্স ক্রেডিট</span>
+        </div>
+
+        <div class="income-tile">
+            <div class="tile-head">
+                <div class="tile-icon" style="background:rgba(245,158,11,0.15); color:#F59E0B;"><i class="fas fa-users-viewfinder"></i></div>
+                <div>
+                    <h4>মাল্টি-টিয়ার রেফারেল</h4>
+                    <p class="tile-sub">২-লেভেল আজীবন রয়্যালটি নেটওয়ার্ক</p>
+                </div>
+            </div>
+            <span class="tile-tag" style="background:rgba(245,158,11,0.12); color:#F59E0B;">টার্গেট মেগা বোনাস</span>
+        </div>
+    </div>
+
+    <!-- QUICK 3 STEPS -->
+    <div class="section-title"><i class="fas fa-bolt"></i> যেভাবে শুরু করবেন</div>
+    <div class="quick-steps">
+        <div class="step-item">
+            <div class="step-num">১</div>
+            <p>'অ্যাপে প্রবেশ করুন' বাটনে চাপ দিয়ে সরাসরি টেলিগ্রাম মিনি অ্যাপে প্রবেশ করুন।</p>
+        </div>
+        <div class="step-item">
+            <div class="step-num">২</div>
+            <p>অফিশিয়াল কমিউনিটিতে জয়েন হয়ে আপনার আইডি সক্রিয় ও ভেরিফাই করে নিন।</p>
+        </div>
+        <div class="step-item">
+            <div class="step-num">৩</div>
+            <p>টাস্ক সম্পন্ন করে সরাসরি বিকাশ, নগদ বা রকেটে টাকা ক্যাশ-আউট করুন।</p>
+        </div>
+    </div>
+
+    <!-- PAYMENT TRUST BAR -->
+    <div class="pay-trust-bar">
+        <div class="pay-badges">
+            <span><i class="fas fa-mobile-screen-button" style="color:#EC4899;"></i> বিকাশ</span>
+            <span><i class="fas fa-wallet" style="color:#F97316;"></i> নগদ</span>
+            <span><i class="fas fa-building-columns" style="color:#8B5CF6;"></i> রকেট</span>
+            <span><i class="fas fa-shield-halved" style="color:#10B981;"></i> ১০০% সুরক্ষিত</span>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        © ২০২৬ LifeMart World. সর্বস্বত্ব সংরক্ষিত।<br>
+        আধুনিক ও স্বচ্ছ ডিজিটাল ক্যারিয়ার প্ল্যাটফর্ম।
+    </footer>
+
+    <!-- STICKY BOTTOM BAR -->
+    <div class="sticky-action-bar">
+        <div class="sticky-left">
+            <span>ইনস্ট্যান্ট সাইনআপ সুবিধা</span>
+            <b>ভেরিফায়েড আর্নিং হাব</b>
+        </div>
+        <a href="https://t.me/lifemart_world_bot/Digital?startapp=7246314532" target="_blank" class="sticky-btn">
+            <i class="fas fa-arrow-right-to-bracket"></i> অ্যাপে প্রবেশ করুন
+        </a>
+    </div>
+
+    <!-- JAVASCRIPT: POPUP CONTROL, COUNTERS & TOAST -->
+    <script>
+        // Automatic Welcome Popup Display (1.5 seconds delay)
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const modal = document.getElementById('welcomeModal');
+                if (modal) modal.classList.add('show');
+            }, 1500);
+        });
+
+        function closeWelcomePopup() {
+            const modal = document.getElementById('welcomeModal');
+            if (modal) modal.classList.remove('show');
+        }
+
+        // Live Member Increment Ticker
+        let todayCount = 1720;
+        let totalCount = 144500;
+        setInterval(() => {
+            if(Math.random() > 0.45) {
+                todayCount += Math.floor(Math.random() * 2) + 1;
+                totalCount += Math.floor(Math.random() * 2) + 1;
+                const toBangla = (n) => n.toString().replace(/\d/g, d => "০১২৩৪৫৬৭৮৯"[d]);
+                document.getElementById('cnt-today').innerText = toBangla(todayCount.toLocaleString('en-US')) + "+";
+                document.getElementById('cnt-total').innerText = toBangla(totalCount.toLocaleString('en-US')) + "+";
+            }
+        }, 5000);
+
+        // Social Proof Rotating Payout Toast
+        const samplePayouts = [
+            "সাকিব আহমেদ ক্যাশ-আউট সম্পন্ন করলেন (বিকাশ)",
+            "তানজিনা আক্তার ক্যাশ-আউট গ্রহণ করলেন (নগদ)",
+            "মোঃ জাহিদ ক্যাশ-আউট সম্পন্ন করলেন (বিকাশ)",
+            "সুমন চৌধুরী ক্যাশ-আউট গ্রহণ করলেন (রকেট)"
+        ];
+        let pIdx = 0;
+        setInterval(() => {
+            pIdx = (pIdx + 1) % samplePayouts.length;
+            document.getElementById('toastMsg').innerText = samplePayouts[pIdx];
+        }, 6500);
+    </script>
+</body>
+</html>
